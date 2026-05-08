@@ -8,7 +8,10 @@ Gui, Add, Radio, gUpdateHotkeys, Left / Right Arrow (some older or alternative c
 Gui, Add, Text,, Output - keys to send to the target window:
 Gui, Add, Radio, vKeyChoice checked, Page Up / Page Down
 Gui, Add, Radio,, Left / Right Arrow
-Gui, Add, CheckBox, vFocusWindow, Keep focus on selected window after keypress
+Gui, Add, Text,, What happens on clicker button press:
+Gui, Add, Radio, vFocusMode checked, Don't focus target window (works well with PowerPoint full-screen slide show)
+Gui, Add, Radio,, Focus target window for the click and immediately switch back (for PowerPoint windowed slide show)
+Gui, Add, Radio,, Focus target window and stay there
 Gui, Add, Button, gReloadBtnHandler, &Refresh
 Gui, Add, Text,, Target window - select which window receives the keystrokes:
 
@@ -26,8 +29,7 @@ Loop %AllWindows%
 
 Gui, Show
 
-; Register all four hotkeys pointing to shared labels
-; then enable only the default pair (PgUp/PgDn)
+; Register all four hotkeys, enable only the default pair (PgUp/PgDn)
 Hotkey, *PgUp, HotkeyBack
 Hotkey, *PgDn, HotkeyFwd
 Hotkey, *Left, HotkeyBack
@@ -78,7 +80,7 @@ GetSelectedWindowId() {
 
 SendToWindow(direction) {
     Gui, Submit, NoHide
-    global FocusWindow
+    global FocusMode
     global KeyChoice
 
     if (KeyChoice = 1)
@@ -87,10 +89,23 @@ SendToWindow(direction) {
         key := (direction = "fwd") ? "{Right}" : "{Left}"
 
     targetId := GetSelectedWindowId()
-    WinGet, prevId, ID, A
-    WinActivate % "ahk_id " . targetId
-    WinWaitActive % "ahk_id " . targetId,, 1
-    Send % key
-    if (!FocusWindow && prevId)
-        WinActivate % "ahk_id " . prevId
+
+    if (FocusMode = 1) {
+        ; Don't activate — send directly via ControlSend
+        ; Works when the target is already the active window (e.g. full-screen slide show)
+        ControlSend,, %key%, % "ahk_id " . targetId
+    } else if (FocusMode = 2) {
+        ; Activate target, send key, then restore focus to the previous window
+        WinGet, prevId, ID, A
+        WinActivate % "ahk_id " . targetId
+        WinWaitActive % "ahk_id " . targetId,, 1
+        Send % key
+        if (prevId)
+            WinActivate % "ahk_id " . prevId
+    } else {
+        ; Activate target, send key, stay there
+        WinActivate % "ahk_id " . targetId
+        WinWaitActive % "ahk_id " . targetId,, 1
+        Send % key
+    }
 }
