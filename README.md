@@ -41,33 +41,36 @@ Download the latest release of **ClickerOverride-Improved** from the [Releases](
 
 Alternatively, you can download the raw script directly from the repository's source code.
 
-### Installing AutoHotkey v1 (to run the script)
+### Installing AutoHotkey v1 (if you downloaded the .ahk script)
 
-This script requires **AutoHotkey v1.1** (also called AutoHotkey Classic). AutoHotkey v2 is *not* compatible. Note that AutoHotkey is only available for Windows.
+> **Tip:** You don't need AutoHotkey to run the `.exe` file from the [Releases](../../releases/latest) page. It already includes the AutoHotkey v1 executable.
+
+Running the script requires **AutoHotkey v1.1** (also called AutoHotkey Classic). AutoHotkey v2 is *not* compatible. Note that AutoHotkey is only available for Windows.
 
 1. Go to [autohotkey.com/download](https://www.autohotkey.com/download/) and under *AutoHotkey v1.1*, download the installer (`.exe`). Or install using your favorite package manager.
 2. Run the installer and follow the prompts. The default options are fine.
 3. Once installed, double-click `ClickerOverride-Improved-ahk1.ahk` to run it. The `.ahk` extension should be associated with AutoHotkey v1 automatically.
 
-> **Note:** If you have AutoHotkey v2 already installed, you may need to right-click the `.ahk` file and choose *Run with* → *AutoHotkey v1.1* or set the file association manually.
-
 ### Pympress (for PDF slides)
 
 [Pympress](https://github.com/Cimbali/pympress) is a feature-rich PDF presentation viewer designed for dual-screen setups, with a Presenter View similar to PowerPoint. It is a popular open-source alternative to PowerPoint for presenting PDF-based slide decks.
 
-ClickerOverride-Improved works well with Pympress in **Mode 1**. Pympress responds to background key messages, so the target window does not need to be focused to receive navigation keystrokes, allowing you to seamlessly use the presentation PC without clicker clicks interfering with your work.
+ClickerOverride-Improved works well with Pympress in **Mode 1**. Pympress responds to background key messages, so the target window does not need to be focused to receive navigation keystrokes, allowing you to seamlessly use the presentation PC without clicker clicks interfering with your work. If you are presenting PDF slides, using Pympress is recommended.
 
 ## How to Use
 
 1. Open your presentation (in PowerPoint, Pympress, etc.) and enter slide show mode.
-2. Launch `ClickerOverride-Improved-ahk1.ahk`. If you've associated `.ahk` files with AutoHotkey during installation, you can just double-click the script. The main configuration window will appear.
-3. **Clicker Input** - select which keys your clicker sends to the PC (Page Up/Page Down is correct for most modern clickers).
-4. **Output Keystrokes** - select which keys should be forwarded to the target window. Start with Page Up/Page Down; switch to Left/Right Arrow if the application does not respond.
-5. **Mode** - choose how the script handles window focus:
-   - *Mode 1* - recommended for Presenter View on a second screen and for Pympress. (default)
-   - *Mode 2* - recommended for windowed or full-screen slide shows where the target window must be briefly focused to receive input.
-   - *Mode 3* - focus the target window and stay there.
-6. **Target Window** - select the window that should receive the forwarded keystrokes. For Presenter View use cases, select the Presenter View window; for Pympress, select the Pympress window.
+2. Launch the script.
+   1. If you downloaded the `.exe` file from the [Releases](../../releases/latest) page, just double-click it. 
+   2. If you downloaded the `.ahk` script, right-click it and select "Run" (you can also just double-click if you've associated `.ahk` files with AutoHotkey during installation).
+3. The main configuration window will appear. You have the following options: 
+   1. **Clicker Input** - select which keys your clicker sends to the PC (Page Up/Page Down is correct for most modern clickers).
+   2. **Output Keystrokes** - select which keys should be forwarded to the target window. Start with Page Up/Page Down; switch to Left/Right Arrow if the application does not respond.
+   3. **Mode** - choose how the script handles window focus:
+      - *Mode 1* - recommended for Presenter View on a second screen and for Pympress. (default)
+      - *Mode 2* - recommended for windowed or full-screen slide shows where the target window must be briefly focused to receive input.
+      - *Mode 3* - focus the target window and stay there.
+   4. **Target Window** - select the window that should receive the forwarded keystrokes. For Presenter View use cases, select the Presenter View window; for Pympress, select the Pympress window.
 7. Click your clicker. The script intercepts the button press and forwards the configured keystroke to the selected window. You can minimise the ClickerOverride-Improved window, but it must remain running. 
 
 > **Tip:** If you open a new application after starting the script, click **Refresh Window List** to reload the script so the new window appears in the list.
