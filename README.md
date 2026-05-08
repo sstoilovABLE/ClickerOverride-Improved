@@ -6,6 +6,7 @@ ClickerOverride-Improved is an AutoHotkey v1 script that intercepts the Page Up/
 
 This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://github.com/4000degrees/ClickerOverride), with substantially expanded functionality, a restructured GUI, and multiple operating modes.
 
+
 ## Use Cases
 
 ClickerOverride-Improved is most useful during high-stakes public events where you have **one person presenting with a clicker device** and another person (you) **working on the presentation computer**.
@@ -29,6 +30,7 @@ ClickerOverride-Improved is most useful during high-stakes public events where y
 | **PowerPoint (windowed mode)** | **Mode 2**. Select the PowerPoint windowed slide show as the Target Window ([windowed PowerPoint slide shows don't support Presenter View](https://techcommunity.microsoft.com/discussions/microsoft-365/powerpoint-presentation-in-windowed-mode-but-with-presenter-screen-also-visible/2046883)) |
 |  [**Pympress**](https://github.com/Cimbali/pympress) PDF presentation | **Mode 1**. Pympress responds to background key messages |
 | **Any application** that accepts Page Up/Down or Left/Right Arrow for navigation | Any mode, depending on whether the app must be focused |
+
 
 ## Installing [![github version badge][github_version]][github_release]
 
@@ -59,6 +61,7 @@ Running the script requires **AutoHotkey v1.1** (also called AutoHotkey Classic)
 
 ClickerOverride-Improved works well with Pympress in **Mode 1**. Pympress responds to background key messages, so the target window does not need to be focused to receive navigation keystrokes, allowing you to seamlessly use the presentation PC without clicker clicks interfering with your work. If you are presenting PDF slides, using Pympress is recommended.
 
+
 ## How to Use
 
 1. Open your presentation (in PowerPoint, Pympress, etc.) and enter slide show mode.
@@ -77,6 +80,7 @@ ClickerOverride-Improved works well with Pympress in **Mode 1**. Pympress respon
 
 > **Tip:** If you open a new application after starting the script, click **Refresh Window List** to reload the script so the new window appears in the list.
 
+
 ## Features
 
 - **Configurable clicker input** - works with clickers that send Page Up/Page Down (e.g. Logitech Spotlight, most modern clickers) *or* Left/Right Arrow (some older or alternative devices).
@@ -85,6 +89,7 @@ ClickerOverride-Improved works well with Pympress in **Mode 1**. Pympress respon
 - **Window selector** - all open windows are listed in the GUI at startup; pick the target with a radio button.
 - **Modifier-key passthrough** - hotkeys are registered with `*`, so they fire even if modifier keys happen to be held down (common with some clickers).
 - **Single-instance enforcement** - only one copy of the script runs at a time; launching it again silently replaces the previous instance.
+
 
 ## Improvements Over the Original
 
@@ -126,6 +131,44 @@ The rewrite is fully commented with section headers, parameter descriptions, and
 ### Pympress target windows
 ![Screenshot of Pympress target windows](assets/screenshot-gui-pympress.png)
 
+
+## FAQ
+
+**Does this work with all clickers / presentation remotes?**
+It should. ClickerOverride-Improved works at the Windows keyboard hook level. As long as your clicker registers as a keyboard device (which virtually all presentation clickers do), no additional setup is needed. I've tested extensively with a Logitech Wireless Presenter R400.
+
+**Does the target window need to be visible on screen?**
+In Mode 1, the target window can be hidden behind other windows - that's the beauty of it! In Mode 2, it is briefly activated and then immediately de-focused; it must be open but does not need to be visible beforehand.
+
+**Does this work with Keynote or Google Slides?**
+Keynote is macOS only; ClickerOverride-Improved is Windows only. For Google Slides running in a browser (Chrome, Edge, Firefox), try Mode 2 with the browser window as the target and Page Up/Down as the output keystroke. Results may vary with Mode 1 depending on whether the browser allows background `ControlSend`.
+
+**Why does my clicker stop working after I alt-tab?**
+In Mode 1, this should not happen. In Mode 2 or 3, if the previously active window is no longer available, the script may fail to restore focus correctly. Click **Refresh Window List** and re-select your target window to reset the script state.
+
+**Is the `.exe` safe to run?**
+The `.exe` is compiled from the `.ahk` source in this repository using the AutoHotkey v1 compiler. If you are worried about the `.exe`, you are more than welcome to download the `.ahk` source file, review it and run it yourself with AutoHotkey. The executable is released for convenience.
+
+**Does this require administrator privileges?**
+Not in most cases. If the target application (e.g. PowerPoint) is running elevated (as administrator), you will need to run ClickerOverride-Improved as administrator as well, otherwise Windows will block keyboard hook injection into elevated processes.
+
+**Will this interfere with my normal Page Up/Down keys?**
+Yes - while the script is running, Page Up and Page Down (or Left/Right Arrow, depending on your Clicker Input selection) are intercepted globally. Minimizing the script window does not stop interception; you must exit the script to restore normal key behavior. Be careful, as pressing Page Up/Page Down (or Left/Right Arrow) on your keyboard while the script is running will always be forwarded to your slide show window. 
+
+
+## Troubleshooting
+
+| Symptom | Likely Cause | Fix |
+|---|---|---|
+| Clicker clicks do nothing | Wrong **Clicker Input** selected | Switch between Page Up/Down and Left/Right Arrow |
+| Slides advance on the wrong screen or window | Wrong **Target Window** selected | Click **Refresh Window List**, re-select the correct window |
+| Slides do not advance in PowerPoint full-screen | In PowerPoint, Mode 1 only works with Presenter View | Switch **Target Window** to the PowerPoint Presenter View window; or switch to **Mode 2** |
+| My regular keyboard's Page Up/Down stopped working | Script is intercepting those keys globally | This is expected; exit the script when not presenting |
+| Script launches but no GUI appears | A previous instance is likely still running | Check the system tray; the previous instance will be replaced automatically |
+| PowerPoint Presenter View window does not appear in the list | Presenter View was opened after the script launched | Click **Refresh Window List** |
+| `.exe` blocked by Windows or antivirus | Compiled AHK executables are sometimes flagged as false positives | Run from the `.ahk` source instead, or add an exclusion in your antivirus |
+
+
 ## AI Assistance Disclaimer
 
 This script and its documentation were developed largely by directing AI coding
@@ -134,11 +177,17 @@ you are encouraged to read and understand the script before running it, and to
 review any modifications carefully before use. The repository author assumes no
 liability for unintended behavior.
 
+
 ## Copyright and License
 
 **ClickerOverride-Improved** is a fork of [ClickerOverride](https://github.com/4000degrees/ClickerOverride) by [4000degrees](https://github.com/4000degrees). The original code is under copyright by 4000degrees. At the time of publication of this fork, the original repository does not carry an open-source license. I've opened an issue on the original repository requesting that a license be added: [ClickerOverride issue #3](https://github.com/4000degrees/ClickerOverride/issues/3).
 
 This fork does not currently carry a license. Until a license is established - either on this repository or on the upstream repository - the standard copyright rules apply: the code in this repository may be viewed and forked on GitHub, but may not be redistributed, sublicensed, or used in other projects without explicit permission from the respective copyright holders.
+
+
+## Keywords
+
+presentation clicker AutoHotkey, redirect clicker to background window, clicker not working when PowerPoint not focused, presentation remote Page Up Page Down intercept, AutoHotkey ControlSend background window, PowerPoint Presenter View background hotkey, Pympress AutoHotkey keyboard hook, wireless clicker redirect Windows, AHK presentation script, Logitech Spotlight AutoHotkey, presentation clicker override, hotkey passthrough background window Windows
 
 [github_version]: https://img.shields.io/github/v/release/sstoilovABLE/ClickerOverride-Improved?label=Latest%20release&logo=github
 [github_release]: https://github.com/sstoilovABLE/ClickerOverride-Improved/releases/latest

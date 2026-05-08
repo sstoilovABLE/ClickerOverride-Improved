@@ -1,0 +1,52 @@
+# ClickerOverride-Improved
+
+> An AutoHotkey v1 script for Windows that intercepts Page Up/Page Down (or Left/Right Arrow) key presses from a wireless presentation clicker and silently forwards them to a target window of your choice — without requiring that window to be in focus.
+
+This is a fork and complete rewrite of ClickerOverride by 4000degrees (https://github.com/4000degrees/ClickerOverride).
+
+## What it does
+
+ClickerOverride-Improved solves a specific problem: during a live presentation, the person operating the presentation PC needs to work in other applications while a presenter uses a wireless clicker to advance slides. Without this script, clicking the clicker advances the focused window — not the slide show. This script intercepts the clicker's keystrokes globally and forwards them to the correct window regardless of focus.
+
+## Key capabilities
+
+- Intercepts Page Up/Page Down or Left/Right Arrow globally via AutoHotkey keyboard hooks
+- Forwards configurable output keystrokes to any selected target window
+- Three focus modes: background send (Mode 1), briefly activate and restore (Mode 2), activate and stay (Mode 3)
+- GUI window selector lists all open windows at startup; includes a Refresh button
+- Works with PowerPoint Presenter View, PowerPoint full-screen slide show, Pympress PDF presenter, and any app that accepts Page Up/Down or Left/Right Arrow for navigation
+- Single-instance enforcement; modifier-key passthrough
+- Distributed as both a compiled .exe (no AutoHotkey required) and a raw .ahk script
+
+## Supported software
+
+- Microsoft PowerPoint (full-screen with Presenter View, full-screen without Presenter View, windowed mode)
+- Pympress (PDF presentation viewer for dual-screen setups)
+- Any Windows application that accepts keyboard navigation via Page Up/Down or Left/Right Arrow
+
+## Requirements
+
+- Windows (any modern version)
+- AutoHotkey v1.1 (AutoHotkey Classic) — only required if running the .ahk script; the .exe release is standalone
+
+## Not compatible with
+
+- AutoHotkey v2 (breaking syntax changes; a v2 port does not currently exist)
+- macOS or Linux
+- Clicker devices that communicate via proprietary protocols rather than as standard keyboard devices
+
+## Files
+
+- ClickerOverride-Improved-ahk1.ahk — the full AutoHotkey v1 source script
+- CONTRIBUTING.md — contribution guidelines
+- assets/ — screenshots used in the README
+
+## Repository
+
+- GitHub: https://github.com/sstoilovABLE/ClickerOverride-Improved
+- Latest release: https://github.com/sstoilovABLE/ClickerOverride-Improved/releases/latest
+- Original upstream: https://github.com/4000degrees/ClickerOverride
+
+## License
+
+No open-source license is currently in effect on this repository. The code may be viewed and forked on GitHub but may not be redistributed or used in other projects without explicit permission from the copyright holders. See README for details.
