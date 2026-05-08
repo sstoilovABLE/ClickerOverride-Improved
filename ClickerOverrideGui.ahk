@@ -2,14 +2,14 @@
 
 WinGet, AllWindows, List
 
-Gui, Add, Text,, Select the window to which Left Arrow and Right Arrow will be redirected
-Gui, Add, CheckBox, vFocusWindow, Activate the selected window
+Gui, Add, Text,, Select the window to which Left/Right Arrow will be redirected
+Gui, Add, CheckBox, vFocusWindow, Keep focus on selected window after keypress
 Gui, Add, Button, gReloadBtnHandler, &Refresh
 
 Loop %AllWindows%
 {
     LoopWindowId := AllWindows%A_Index%
-    WinGetTitle, LoopWindowTitle, ahk_id %LoopWindowId%   ; Fix #1: comma after WinGetTitle
+    WinGetTitle, LoopWindowTitle, ahk_id %LoopWindowId%   ; Fix: comma after WinGetTitle
     WinGet, LoopWindowExe, ProcessName, ahk_id %LoopWindowId%
     if (A_Index = 1) {
         Gui, Add, Radio, vSelectedWindowIndex checked, %LoopWindowTitle% - %LoopWindowExe%
@@ -32,24 +32,35 @@ ReloadBtnHandler:
 GetSelectedWindowId() {
     Gui, Submit, NoHide
     global AllWindows
-    global SelectedWindowIndex          ; Fix #2: split onto its own line
+    global SelectedWindowIndex          ; Fix: on its own line
     id := AllWindows%SelectedWindowIndex%
-    return %id%
+    return id                           ; Fix: was return %id% (double-deref bug)
 }
 
-MaybeFocusWindow() {
+SendToWindow(key) {
     Gui, Submit, NoHide
     global FocusWindow
-    if FocusWindow
-        WinActivate % "ahk_id " . GetSelectedWindowId()   ; Fix #3: dot concat + space
+    targetId := GetSelectedWindowId()
+
+    ; Save currently active window so we can restore focus afterwards
+    WinGet, prevId, ID, A
+
+    ; Activate target and wait up to 1 second for it to become active
+    WinActivate % "ahk_id " . targetId
+    WinWaitActive % "ahk_id " . targetId,, 1
+
+    ; Send the key — this works reliably for PowerPoint slideshow/reading view
+    Send % key
+
+    ; Restore focus to previous window unless "keep focus" is checked
+    if (!FocusWindow && prevId)
+        WinActivate % "ahk_id " . prevId
 }
 
 *PgUp::
-    MaybeFocusWindow()
-    ControlSend, ahk_parent, {Left}, % "ahk_id " . GetSelectedWindowId()   ; Fix #4
+    SendToWindow("{Left}")
     return
 
 *PgDn::
-    MaybeFocusWindow()
-    ControlSend, ahk_parent, {Right}, % "ahk_id " . GetSelectedWindowId()  ; Fix #5
+    SendToWindow("{Right}")
     return
