@@ -1,6 +1,6 @@
 ﻿; ============================================================
 ;  ClickerOverride-Improved
-;  Version      :   v1-ahk1
+;  Version      :   ahk1-v1
 ;  Tested with  :   AutoHotkey v1.1 (ANSI/Unicode)
 ;  Repo         :   https://github.com/sstoilovABLE/ClickerOverride-Improved
 ;  License      :   Refer to the GitHub repositories for license information
@@ -38,7 +38,7 @@ Gui, Font, Norm
 Gui, Add, Text, yp+16, What keys does your clicker send?
 ; vCaptureChoice: 1 = PgUp/PgDn (default), 2 = Left/Right
 ; gUpdateHotkeys fires immediately on selection change to swap active hotkeys
-Gui, Add, Radio, vCaptureChoice checked gUpdateHotkeys, Page Up / Page Down (most clickers, e.g. Logitech Spotlight)
+Gui, Add, Radio, vCaptureChoice checked gUpdateHotkeys, Page Up / Page Down (most clickers)
 Gui, Add, Radio, gUpdateHotkeys, Left / Right Arrow (some older or alternative clickers)
 
 ; --- Section: Output Keystrokes ---
@@ -85,7 +85,7 @@ Loop %AllWindows%
     }
 }
 
-Gui, Show, Center, ClickerOverride-Improved v1-ahk1
+Gui, Show, Center, ClickerOverride-Improved ahk1-v1
 
 
 ; ============================================================
