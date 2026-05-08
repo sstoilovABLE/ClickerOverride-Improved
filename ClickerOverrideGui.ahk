@@ -2,7 +2,7 @@
 
 WinGet AllWindows, List
 
-Gui, Add, Text,, Select the window to which Page Up and Page Down will be redirected
+Gui, Add, Text,, Select the window to which Left Arrow and Right Arrow will be redirected
 Gui, Add, CheckBox, vFocusWindow, Activate the selected window
 Gui, Add, Button, gReloadBtnHandler, &Refresh
 
@@ -47,10 +47,10 @@ MaybeFocusWindow() {
 
 *PgUp::
 	MaybeFocusWindow()
-	ControlSend,ahk_parent,{PgUp},% "ahk_id" GetSelectedWindowId()
+	ControlSend,ahk_parent,{Left},% "ahk_id" GetSelectedWindowId()
 	return
 
 *PgDn::
 	MaybeFocusWindow()
-	ControlSend,ahk_parent,{PgDn},% "ahk_id" GetSelectedWindowId()
+	ControlSend,ahk_parent,{Right},% "ahk_id" GetSelectedWindowId()
 	return
