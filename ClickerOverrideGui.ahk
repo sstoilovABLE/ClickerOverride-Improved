@@ -2,18 +2,34 @@
 
 WinGet, AllWindows, List
 
-Gui, Add, Text,, Clicker input - select the keys your clicker sends:
+Gui, Add, Link,, Visit <a href="https://github.com/sstoilovABLE/ClickerOverride-Improved">ClickerOverride-Improved on GitHub</a> for the latest version and docs.
+Gui, Font, Bold
+Gui, Add, Text,, Clicker Input
+Gui, Font, Norm
+Gui, Add, Text, yp+16, What keys does your clicker send?
 Gui, Add, Radio, vCaptureChoice checked gUpdateHotkeys, Page Up / Page Down (most clickers, e.g. Logitech Spotlight)
 Gui, Add, Radio, gUpdateHotkeys, Left / Right Arrow (some older or alternative clickers)
-Gui, Add, Text,, Output - keys to send to the target window:
-Gui, Add, Radio, vKeyChoice checked, Page Up / Page Down
-Gui, Add, Radio,, Left / Right Arrow
-Gui, Add, Text,, What happens on clicker button press:
-Gui, Add, Radio, vFocusMode checked, Don't focus target window (works well with PowerPoint full-screen slide show)
-Gui, Add, Radio,, Focus target window for the click and immediately switch back (for PowerPoint windowed slide show)
-Gui, Add, Radio,, Focus target window and stay there
-Gui, Add, Button, gReloadBtnHandler, &Refresh
-Gui, Add, Text,, Target window - select which window receives the keystrokes:
+
+Gui, Font, Bold
+Gui, Add, Text, yp+28, Output Keystrokes
+Gui, Font, Norm
+Gui, Add, Text, yp+16, What keys should be sent to the target window?
+Gui, Add, Radio, vKeyChoice checked, Page Up / Page Down (default)
+Gui, Add, Radio,, Left / Right Arrow (if PgUp/Dn doesn't work)
+
+Gui, Font, Bold
+Gui, Add, Text, yp+28, Mode
+Gui, Font, Norm
+Gui, Add, Text, yp+16, What should happen on clicker button press?
+Gui, Add, Radio, vFocusMode checked, Mode 1: Don't focus target window`n(works well with PowerPoint Presenter View and Pympress PDF)
+Gui, Add, Radio,, Mode 2: Focus target window for the click and immediately switch back`n(works with windowed PowerPoint, full-screen PPT without Presenter View, or other apps)
+Gui, Add, Radio,, Mode 3: Focus target window and stay there
+
+Gui, Font, Bold
+Gui, Add, Text, yp+28, Target Window
+Gui, Font, Norm
+Gui, Add, Text, yp+16, Which window should receive the keystrokes?`nIn Mode 1, select Presenter View as target`nIn Mode 2 or 3, select the slide show window as target
+Gui, Add, Button, gReloadBtnHandler, &Refresh Window List
 
 Loop %AllWindows%
 {
@@ -91,11 +107,8 @@ SendToWindow(direction) {
     targetId := GetSelectedWindowId()
 
     if (FocusMode = 1) {
-        ; Don't activate — send directly via ControlSend
-        ; Works when the target is already the active window (e.g. full-screen slide show)
         ControlSend,, %key%, % "ahk_id " . targetId
     } else if (FocusMode = 2) {
-        ; Activate target, send key, then restore focus to the previous window
         WinGet, prevId, ID, A
         WinActivate % "ahk_id " . targetId
         WinWaitActive % "ahk_id " . targetId,, 1
@@ -103,7 +116,6 @@ SendToWindow(direction) {
         if (prevId)
             WinActivate % "ahk_id " . prevId
     } else {
-        ; Activate target, send key, stay there
         WinActivate % "ahk_id " . targetId
         WinWaitActive % "ahk_id " . targetId,, 1
         Send % key
