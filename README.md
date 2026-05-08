@@ -30,9 +30,16 @@ This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://
 
 ## Installing
 
-### Download the script
+### Download the script [![github version badge][github_version]][github_release]
 
-Download the latest version of the `ClickerOverride-Improved-ahk1.ahk` script from this repo's source code or from the latest release.
+Download the latest release of **ClickerOverride-Improved** from the [Releases](../../releases/latest) page. Under **Assets**, choose the file that matches how you want to run the script:
+
+| File | When to use |
+|---|---|
+| `ClickerOverride-Improved-ahk1.exe` | You do not have AutoHotkey installed and do not want to install it |
+| `ClickerOverride-Improved-ahk1.ahk` | You have AutoHotkey v1.1 installed (or plan to install it) |
+
+Alternatively, you can download the raw script directly from the repository's source code.
 
 ### Installing AutoHotkey v1 (to run the script)
 
@@ -127,3 +134,6 @@ liability for unintended behavior.
 **ClickerOverride-Improved** is a fork of [ClickerOverride](https://github.com/4000degrees/ClickerOverride) by [4000degrees](https://github.com/4000degrees). The original code is under copyright by 4000degrees. At the time of publication of this fork, the original repository does not carry an open-source license. I've opened an issue on the original repository requesting that a license be added: [ClickerOverride issue #3](https://github.com/4000degrees/ClickerOverride/issues/3).
 
 This fork does not currently carry a license. Until a license is established - either on this repository or on the upstream repository - the standard copyright rules apply: the code in this repository may be viewed and forked on GitHub, but may not be redistributed, sublicensed, or used in other projects without explicit permission from the respective copyright holders.
+
+[github_version]: https://img.shields.io/github/v/release/sstoilovABLE/ClickerOverride-Improved?label=Latest%20GitHub%20release&logo=github
+[github_release]: https://github.com/sstoilovABLE/ClickerOverride-Improved/releases/latest
