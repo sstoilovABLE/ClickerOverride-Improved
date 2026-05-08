@@ -8,6 +8,8 @@ This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://
 
 ## Use Cases
 
+ClickerOverride-Improved is most useful during high-stakes public events where you have **one person presenting with a clicker device** and another person (you) **working on the presentation computer**.
+
 ### Setup Scenarios
 
 | Setup | Recommended Mode | Target Window |
@@ -16,7 +18,7 @@ This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://
 | **In-person, dual screen, without Presenter View** <br> Presentation PC connected to an external monitor or projector. PowerPoint without Presenter View or another app is full-screen presenting on the second screen. | Try **Mode 1** (works with Pympress)<br> **Mode 2** for PowerPoint windowed mode and apps incompatible with Mode 1 | The full-screen slide show window |
 | **In-person, dual screen, via OBS Studio** <br> Presentation PC connected to a second screen. OBS Studio (or similar) uses a windowed slide show as input and outputs it to the second screen or projector. The slide show runs in windowed mode as an OBS source. | Try **Mode 1** (works with Pympress)<br> **Mode 2** for PowerPoint windowed mode and apps incompatible with Mode 1 | The windowed slide show window (not OBS) |
 | **Online presentation, screen shared** <br> Presentation PC with or without a second screen. The slide show runs in windowed mode and is screen-shared directly into an online meeting (Zoom, Teams, Meet, etc.). | Try **Mode 1** (works with Pympress)<br> **Mode 2** for PowerPoint windowed mode and apps incompatible with Mode 1 | The windowed slide show window |
-| **Live streaming via OBS Studio** <br> Presentation PC with or without a second screen. The slide show runs in windowed mode and is captured by OBS Studio (or similar) as a source for a live stream. | Try **Mode 1** (works with Pympress)<br> **Mode 2** for PowerPoint windowed mode and apps incompatible with Mode 1 | The windowed slide show window (not OBS) |
+| **Live streaming** <br> Presentation PC with or without a second screen. The slide show runs in windowed mode and is captured by OBS Studio (or similar) as a source for a live stream. You need to work on the PC without disrupting the livestream | Try **Mode 1** (works with Pympress)<br> **Mode 2** for PowerPoint windowed mode and apps incompatible with Mode 1 | The windowed slide show window (not OBS) |
 
 ### Software Scenarios
 
