@@ -118,13 +118,13 @@ The rewrite is fully commented with section headers, parameter descriptions, and
 
 ## Screenshots
 ### ClickerOverride-Improved's GUI
-![ClickerOverride-Improved Screenshot](assets\screenshot-gui.png)
+![ClickerOverride-Improved Screenshot](assets/screenshot-gui.png)
 
 ### PowerPoint target windows
-![Screenshot of PowerPoint target windows](assets\screenshot-gui-powerpoint.png)
+![Screenshot of PowerPoint target windows](assets/screenshot-gui-powerpoint.png)
 
 ### Pympress target windows
-![Screenshot of Pympress target windows](assets\screenshot-gui-pympress.png)
+![Screenshot of Pympress target windows](assets/screenshot-gui-pympress.png)
 
 ## AI Assistance Disclaimer
 
