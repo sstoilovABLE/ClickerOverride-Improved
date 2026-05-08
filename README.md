@@ -28,16 +28,16 @@ This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://
 |  [**Pympress**](https://github.com/Cimbali/pympress) PDF presentation | **Mode 1**. Pympress responds to background key messages |
 | **Any application** that accepts Page Up/Down or Left/Right Arrow for navigation | Any mode, depending on whether the app must be focused |
 
-## Installing
+## Installing [![github version badge][github_version]][github_release]
 
-### Download the script [![github version badge][github_version]][github_release]
+### Download the script
 
 Download the latest release of **ClickerOverride-Improved** from the [Releases](../../releases/latest) page. Under **Assets**, choose the file that matches how you want to run the script:
 
 | File | When to use |
 |---|---|
-| `ClickerOverride-Improved-ahk1.exe` | You do not have AutoHotkey installed and do not want to install it |
-| `ClickerOverride-Improved-ahk1.ahk` | You have AutoHotkey v1.1 installed (or plan to install it) |
+| `.exe` | You do not have AutoHotkey installed and do not want to install it |
+| `.ahk` | You have AutoHotkey v1.1 installed (or plan to install it) |
 
 Alternatively, you can download the raw script directly from the repository's source code.
 
@@ -135,5 +135,5 @@ liability for unintended behavior.
 
 This fork does not currently carry a license. Until a license is established - either on this repository or on the upstream repository - the standard copyright rules apply: the code in this repository may be viewed and forked on GitHub, but may not be redistributed, sublicensed, or used in other projects without explicit permission from the respective copyright holders.
 
-[github_version]: https://img.shields.io/github/v/release/sstoilovABLE/ClickerOverride-Improved?label=Latest%20GitHub%20release&logo=github
+[github_version]: https://img.shields.io/github/v/release/sstoilovABLE/ClickerOverride-Improved?label=Latest%20release&logo=github
 [github_release]: https://github.com/sstoilovABLE/ClickerOverride-Improved/releases/latest
