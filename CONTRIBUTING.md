@@ -7,6 +7,7 @@ with the project, submit changes, and publish a release. It is also so I don't f
 ## Table of Contents
 
 - [Ways to Contribute](#ways-to-contribute)
+- [Outstanding Tasks](#outstanding-tasks)
 - [Version Naming Convention](#version-naming-convention)
 - [Development Setup](#development-setup)
 - [Submitting Changes](#submitting-changes)
@@ -22,6 +23,21 @@ with the project, submit changes, and publish a release. It is also so I don't f
 - Suggest features or improvements via Issues
 - Submit bug fixes or new features via Pull Requests
 - Improve documentation via Pull Requests
+
+
+## Outstanding Tasks
+
+The following tasks are open and contributions are welcome:
+
+- **AHK v2 rewrite - end-to-end testing:** Run the draft AHKv2 script through all use
+  cases covered by the v1 script and verify behavioral parity. Document any
+  discrepancies found.
+- **Bug hunting and optimization in the v2 script:** Review the v2 script for
+  bugs, edge cases, and performance or code-quality improvements.
+- **Release `ahk2-v1`:** Once the v2 script passes parity testing, prepare and
+  publish the first AHK v2 release following the [Naming Files for
+  Release](#naming-files-for-release) and [Publishing a GitHub
+  Release](#publishing-a-github-release) conventions.
 
 
 ## Version Naming Convention
