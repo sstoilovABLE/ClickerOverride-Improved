@@ -12,10 +12,11 @@
 ;
 ; ============================================================
 
+
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
-global MyGui, AllWindowIds
+global MyGui, AllWindowIds, UseLeftRight := false
 
 
 ; ============================================================
@@ -79,17 +80,10 @@ for Index, WinId in AllWindowIds {
 
 MyGui.Show("Center")
 
-
-; ============================================================
-;  HOTKEY REGISTRATION
-; ============================================================
-
 Hotkey "*PgUp", HotkeyBack
 Hotkey "*PgDn", HotkeyFwd
-Hotkey "*Left", HotkeyBack
-Hotkey "*Right", HotkeyFwd
-Hotkey "*Left", "Off"
-Hotkey "*Right", "Off"
+Hotkey "*PgUp", "Off"
+Hotkey "*PgDn", "Off"
 
 
 ; ============================================================
@@ -105,19 +99,19 @@ ReloadBtnHandler(*) {
 }
 
 UpdateHotkeys(*) {
-    global MyGui
+    global MyGui, UseLeftRight
     Saved := MyGui.Submit("NoHide")
+    MyGui.Hide()            ; hide in both branches before any hotkey state changes
     if (Saved.CaptureChoice = 1) {
+        UseLeftRight := false
         Hotkey "*PgUp", "On"
         Hotkey "*PgDn", "On"
-        Hotkey "*Left", "Off"
-        Hotkey "*Right", "Off"
     } else {
         Hotkey "*PgUp", "Off"
         Hotkey "*PgDn", "Off"
-        Hotkey "*Left", "On"
-        Hotkey "*Right", "On"
+        UseLeftRight := true
     }
+    MyGui.Show()
 }
 
 HotkeyFwd(*) {
@@ -168,4 +162,22 @@ SendToWindow(direction) {
         WinWaitActive "ahk_id " targetId, , 1
         Send key
     }
+}
+
+
+; ============================================================
+;  CONTEXT-SENSITIVE HOTKEYS FOR LEFT/RIGHT
+;  Always registered, silently ignored when UseLeftRight is
+;  false or when the script GUI is the active window.
+; ============================================================
+
+*Left:: {
+    global UseLeftRight
+    if UseLeftRight && !WinActive("ClickerOverride-Improved ahk2-v1")
+        HotkeyBack()
+}
+*Right:: {
+    global UseLeftRight
+    if UseLeftRight && !WinActive("ClickerOverride-Improved ahk2-v1")
+        HotkeyFwd()
 }
