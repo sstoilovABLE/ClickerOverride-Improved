@@ -29,15 +29,13 @@ with the project, submit changes, and publish a release. It is also so I don't f
 
 The following tasks are open and contributions are welcome:
 
-- **AHK v2 rewrite - end-to-end testing:** Run the draft AHKv2 script through all use
-  cases covered by the v1 script and verify behavioral parity. Document any
-  discrepancies found.
-- **Bug hunting and optimization in the v2 script:** Review the v2 script for
-  bugs, edge cases, and performance or code-quality improvements.
-- **Release `ahk2-v1`:** Once the v2 script passes parity testing, prepare and
-  publish the first AHK v2 release following the [Naming Files for
-  Release](#naming-files-for-release) and [Publishing a GitHub
+- **AHK v2 rewrite**: 
+  - **End-to-end testing:** Run the draft AHKv2 script through all use
+  cases covered by the v1 script and verify behavioral parity. Document any discrepancies found.
+  - **Bug hunting and optimization:** Review the v2 script for bugs, edge cases, and performance or code-quality improvements.
+  - **Release `ahk2-v1`:** Once the v2 script passes parity testing, prepare and publish the first AHK v2 release following the [Naming Files for Release](#naming-files-for-release) and [Publishing a GitHub
   Release](#publishing-a-github-release) conventions.
+  - **Update docs**: Update README, llms.txt and CONTRIBUTING after ahk2 script is published.
 
 
 ## Version Naming Convention

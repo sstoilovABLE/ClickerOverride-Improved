@@ -180,9 +180,9 @@ liability for unintended behavior.
 
 ## Copyright and License
 
-**ClickerOverride-Improved** is a fork of [ClickerOverride](https://github.com/4000degrees/ClickerOverride) by [4000degrees](https://github.com/4000degrees). The original code is under copyright by 4000degrees. At the time of publication of this fork, the original repository does not carry an open-source license. I've opened an issue on the original repository requesting that a license be added: [ClickerOverride issue #3](https://github.com/4000degrees/ClickerOverride/issues/3).
+**ClickerOverride-Improved** is a fork of [ClickerOverride](https://github.com/4000degrees/ClickerOverride) by [4000degrees](https://github.com/4000degrees).
 
-This fork does not currently carry a license. Until a license is established - either on this repository or on the upstream repository - the standard copyright rules apply: the code in this repository may be viewed and forked on GitHub, but may not be redistributed, sublicensed, or used in other projects without explicit permission from the respective copyright holders.
+ClickerOverride-Improved is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 
 ## Keywords

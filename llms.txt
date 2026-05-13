@@ -49,4 +49,4 @@ ClickerOverride-Improved solves a specific problem: during a live presentation, 
 
 ## License
 
-No open-source license is currently in effect on this repository. The code may be viewed and forked on GitHub but may not be redistributed or used in other projects without explicit permission from the copyright holders. See README for details.
+MIT License — see the LICENSE file in the repository
