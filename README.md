@@ -2,7 +2,9 @@
 
 **Redirect your presentation clicker's buttons to any window without requiring that window to be in focus.**
 
-ClickerOverride-Improved is an AutoHotkey v1 script that intercepts the Page Up/Page Down (or Left/Right Arrow) key presses sent by a wireless presentation clickers/remote controls and silently forwards configurable keystrokes to a target window of your choice. The target window does not need to be active or even visible on the primary screen. This script is especially useful when you need to work on the presentation PC while someone else is presenting a slide show. 
+ClickerOverride-Improved is an AutoHotkey v1 script that intercepts the Page Up/Page Down (or Left/Right Arrow) key presses sent by a wireless presentation clickers/remote controls and silently forwards configurable keystrokes to a target window of your choice. The target window does not need to be active or even visible on the primary screen. This script is especially useful when you need to work on the presentation PC while someone else is presenting a slide show.
+
+> **Note:** A rewrite of the script for AutoHotkey v2 is in progress. 
 
 This is a fork and complete rewrite of [ClickerOverride by 4000degrees](https://github.com/4000degrees/ClickerOverride), with substantially expanded functionality, a restructured GUI, and multiple operating modes.
 
@@ -49,7 +51,7 @@ Alternatively, you can download the raw script directly from the repository's so
 
 > **Tip:** You don't need AutoHotkey to run the `.exe` file from the [Releases](../../releases/latest) page. It already includes the AutoHotkey v1 executable.
 
-Running the script requires **AutoHotkey v1.1** (also called AutoHotkey Classic). AutoHotkey v2 is *not* compatible. Note that AutoHotkey is only available for Windows.
+Running the script requires **AutoHotkey v1.1** (also called AutoHotkey Classic). AutoHotkey v2 is *not* compatible with the current version. An AutoHotkey v2 rewrite is in progress. Note that AutoHotkey is only available for Windows.
 
 1. Go to [autohotkey.com/download](https://www.autohotkey.com/download/) and under *AutoHotkey v1.1*, download the installer (`.exe`). Or install using your favorite package manager.
 2. Run the installer and follow the prompts. The default options are fine.
